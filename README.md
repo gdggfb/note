@@ -1,5 +1,5 @@
 # note
-_看源码是解决一切问题的根本办法。_
+> 看源码是解决一切问题的根本办法。
 
 ## 目录
 1. [红黑树赏析](github.com/gdggfb/note/resource/RedBlackTree.md)
