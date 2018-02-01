@@ -20,6 +20,160 @@
 + 删除时如果替代节点是红色的，那么操作将是快速的，不用进入迭代平衡的，因为替代的节点可以直接移除而不破坏定义
 + 删除时，如果替代节点是黑色的，那么操作将是复杂的，因为平衡操作总是有可能破坏兄弟节点的平衡
 + 兄弟节点的操作会引起一系列的新的平衡操作，就像连锁反应，蝴蝶效应。
+### treeMap里的单线程的红黑树的写法似乎别有一番风味，先沾到这里，日后再赏
+```java
+private void fixAfterInsertion(Entry<K,V> x) {
+    x.color = RED;
+
+    while (x != null && x != root && x.parent.color == RED) {
+        if (parentOf(x) == leftOf(parentOf(parentOf(x)))) {
+            Entry<K,V> y = rightOf(parentOf(parentOf(x)));
+            if (colorOf(y) == RED) {
+                setColor(parentOf(x), BLACK);
+                setColor(y, BLACK);
+                setColor(parentOf(parentOf(x)), RED);
+                x = parentOf(parentOf(x));
+            } else {
+                if (x == rightOf(parentOf(x))) {
+                    x = parentOf(x);
+                    rotateLeft(x);
+                }
+                setColor(parentOf(x), BLACK);
+                setColor(parentOf(parentOf(x)), RED);
+                rotateRight(parentOf(parentOf(x)));
+            }
+        } else {
+            Entry<K,V> y = leftOf(parentOf(parentOf(x)));
+            if (colorOf(y) == RED) {
+                setColor(parentOf(x), BLACK);
+                setColor(y, BLACK);
+                setColor(parentOf(parentOf(x)), RED);
+                x = parentOf(parentOf(x));
+            } else {
+                if (x == leftOf(parentOf(x))) {
+                    x = parentOf(x);
+                    rotateRight(x);
+                }
+                setColor(parentOf(x), BLACK);
+                setColor(parentOf(parentOf(x)), RED);
+                rotateLeft(parentOf(parentOf(x)));
+            }
+        }
+    }
+    root.color = BLACK;
+}
+
+private void fixAfterDeletion(Entry<K,V> x) {
+    while (x != root && colorOf(x) == BLACK) {
+        if (x == leftOf(parentOf(x))) {
+            Entry<K,V> sib = rightOf(parentOf(x));
+
+            if (colorOf(sib) == RED) {
+                setColor(sib, BLACK);
+                setColor(parentOf(x), RED);
+                rotateLeft(parentOf(x));
+                sib = rightOf(parentOf(x));
+            }
+
+            if (colorOf(leftOf(sib))  == BLACK &&
+                colorOf(rightOf(sib)) == BLACK) {
+                setColor(sib, RED);
+                x = parentOf(x);
+            } else {
+                if (colorOf(rightOf(sib)) == BLACK) {
+                    setColor(leftOf(sib), BLACK);
+                    setColor(sib, RED);
+                    rotateRight(sib);
+                    sib = rightOf(parentOf(x));
+                }
+                setColor(sib, colorOf(parentOf(x)));
+                setColor(parentOf(x), BLACK);
+                setColor(rightOf(sib), BLACK);
+                rotateLeft(parentOf(x));
+                x = root;
+            }
+        } else { // symmetric
+            Entry<K,V> sib = leftOf(parentOf(x));
+
+            if (colorOf(sib) == RED) {
+                setColor(sib, BLACK);
+                setColor(parentOf(x), RED);
+                rotateRight(parentOf(x));
+                sib = leftOf(parentOf(x));
+            }
+
+            if (colorOf(rightOf(sib)) == BLACK &&
+                colorOf(leftOf(sib)) == BLACK) {
+                setColor(sib, RED);
+                x = parentOf(x);
+            } else {
+                if (colorOf(leftOf(sib)) == BLACK) {
+                    setColor(rightOf(sib), BLACK);
+                    setColor(sib, RED);
+                    rotateLeft(sib);
+                    sib = leftOf(parentOf(x));
+                }
+                setColor(sib, colorOf(parentOf(x)));
+                setColor(parentOf(x), BLACK);
+                setColor(leftOf(sib), BLACK);
+                rotateRight(parentOf(x));
+                x = root;
+            }
+        }
+    }
+    setColor(x, BLACK);
+}
+private static <K,V> boolean colorOf(Entry<K,V> p) {
+    return (p == null ? BLACK : p.color);
+}
+private static <K,V> Entry<K,V> parentOf(Entry<K,V> p) {
+    return (p == null ? null: p.parent);
+}
+private static <K,V> void setColor(Entry<K,V> p, boolean c) {
+    if (p != null)
+        p.color = c;
+}
+private static <K,V> Entry<K,V> leftOf(Entry<K,V> p) {
+    return (p == null) ? null: p.left;
+}
+private static <K,V> Entry<K,V> rightOf(Entry<K,V> p) {
+    return (p == null) ? null: p.right;
+}
+/** From CLR */
+private void rotateLeft(Entry<K,V> p) {
+    if (p != null) {
+        Entry<K,V> r = p.right;
+        p.right = r.left;
+        if (r.left != null)
+            r.left.parent = p;
+        r.parent = p.parent;
+        if (p.parent == null)
+            root = r;
+        else if (p.parent.left == p)
+            p.parent.left = r;
+        else
+            p.parent.right = r;
+        r.left = p;
+        p.parent = r;
+    }
+}
+/** From CLR */
+private void rotateRight(Entry<K,V> p) {
+    if (p != null) {
+        Entry<K,V> l = p.left;
+        p.left = l.right;
+        if (l.right != null) l.right.parent = p;
+        l.parent = p.parent;
+        if (p.parent == null)
+            root = l;
+        else if (p.parent.right == p)
+            p.parent.right = l;
+        else p.parent.left = l;
+        l.right = p;
+        p.parent = l;
+    }
+}
+```
 ### 红黑树代码实现，取自java8的ConcurrentHashMap的反编译结果
 ```java
 /*    
