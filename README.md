@@ -1,7 +1,7 @@
 # note
-> 看源码是解决一切问题的根本办法。
+> 读源码是解决一切问题的根本办法。
 
 ## 目录
-1. [红黑树赏析](github.com/gdggfb/note/resource/RedBlackTree.md)
+1. [红黑树赏析](https://github.com/gdggfb/note/blob/master/resource/RedBlackTree.md)
 2. [java数据结构大总结]()
 3. [Linux内核探秘]()
