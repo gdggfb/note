@@ -24,14 +24,14 @@
 # Vector
     一个多线程的ArrayList，容量扩展比ArrayList快，然而用的是全局锁！
 # Stack
-    后进先出，多线程，全局锁，扩容数组。
+    后进先出，多线程，全局锁，扩容数组。继承至Vector。
 # ArrayDeque
     一个很陌生的类，以前从未见过。单线程，数组，扩容，pop，posh，一个很自由的堆栈结构。
 # BitSet
     如果把我之前的C项目改成java的，那这个类将被用来存储位图。操作一段字节里位值的类，单线程的。（我发现有很多在C里面很普通的东西，在java里面会被吹嘘成神一样。）
 # Arrays
     一个操作数组的工具类，提供了对数组的查找，排序，赋值操作。
-    https://www.cnblogs.com/HeDante/p/7464874.html
+https://www.cnblogs.com/HeDante/p/7464874.html
 # Collections
     void reverse(List list)：反转
     void shuffle(List list),随机排序
@@ -49,19 +49,24 @@
 https://www.cnblogs.com/fysola/p/6021134.html
 
 # StringTokenizer
-Observable
-Local
-ListResourceBundle
-Currency
-DoubleSummaryStatistics
-IntSummaryStatistics
-GregorianCalendar
-Locale
-Optional
-PriorityQueue
-ResourceBundle
-Scanner
-ServiceLoader
+    字符串切割机
+# Observable
+    订阅发布模型，在分布式设计横行的今天，这种单机的东西的应用将越来越狭隘。
+# Locale
+    国家相关一些东西。
+# Currency
+    币种类
+# IntSummaryStatistics
+    可以接收int数组转换成IntStream，计算最大值，最小值，平均值，数量，总数。还有一个DoubleSummaryStatistics 可以处理小数数据.
+# Optional
+    /汗
+# PriorityQueue
+    优先级队列 是不同于先进先出队列的另一种队列。每次从队列中取出的是具有最高优先权的元素。首先它是一个队列，但是它强调了“优先”二字，所以，已经不能算是一般意义上的队列了，它的“优先”意指取队首元素时，有一定的选择性，即根据元素的属性选择某一项值最优的出队
+http://blog.csdn.net/qq_33583069/article/details/50611610
+# ResourceBundle
+    Properties
+# ServiceLoader
+    简单的看了下如何使用，好像和spi差不多
 
 
 ArrayBlockingQueue
