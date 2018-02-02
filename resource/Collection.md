@@ -67,11 +67,11 @@ http://blog.csdn.net/qq_33583069/article/details/50611610
     Properties
 # ServiceLoader
     简单的看了下如何使用，好像和spi差不多
-
-
-ArrayBlockingQueue
-CompletableFuture
-ConcurrentHashMap
+# ConcurrentHashMap
+    高性能多线程的代表。
+# ArrayBlockingQueue
+    一个有容量的多线程数组，为空时读阻塞，满时写阻塞，写入和读取时都会尝试唤醒等待中的进程
+# CompletableFuture
 ConcurrentLinkedDeque
 ConcurrentLinkedQueue
 ConcurrentSkipListMap
