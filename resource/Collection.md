@@ -86,9 +86,10 @@ http://blog.csdn.net/qq_33583069/article/details/50611610
     多线程数组，类如其名，修改元素的时候将数组复制一份出来修改，修改完了直接替换掉，适用于写少读多的情况，且对写入时效没有太严格的要求。
 # CopyOnWriteArraySet
     CopyOnWriteArrayList.addIfAbsent()
-# ountDownLatch
-# CountedCompleter
+# CountDownLatch
+    等待其他线程完成。
 # CyclicBarrier
+    同样是等待其他线程完成后才执行。
 # DelayQueue
 # ExecutorCompletionService
 # ForkJoinPool
@@ -104,3 +105,4 @@ http://blog.csdn.net/qq_33583069/article/details/50611610
 # ThreadLocalRandom
 # ThreadPoolExecutor
 
+atomic
