@@ -4,5 +4,4 @@
 ## 目录
 1. [红黑树赏析](https://github.com/gdggfb/note/blob/master/resource/RedBlackTree.md)
 2. [java数据结构大总结](https://github.com/gdggfb/note/blob/master/resource/Collection.md)
-3. [Linux内核探秘](https://github.com/gdggfb/note/blob/master/resource/Kernel.md)
-4. [关于工作]()
+3. [读书列表](https://github.com/gdggfb/note/blob/master/resource/book.md)
