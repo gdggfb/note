@@ -91,18 +91,22 @@ http://blog.csdn.net/qq_33583069/article/details/50611610
 # CyclicBarrier
     同样是等待其他线程完成后才执行。
 # DelayQueue
+    存进去的东西超过一定时间了才能取出，这个类在某些场景下一定大有作为！
 # ExecutorCompletionService
+    异步处理任务，并且得到结果后还需要对结果进行处理。
 # ForkJoinPool
-# ForkJoinTask
-# ForkJoinWorkerThread
+    将任务拆分为小任务（ForkJoinTask）的工具
 # LinkedBlockingDeque
+    多线程双向链表，链表没有容量，操作链表时会阻塞。
 # LinkedBlockingQueue
+    和LinkedBlockingDeque一样，但是是单向的。
 # LinkedTransferQueue
+    想起了移动营业厅的取号排队，／泪
 # PriorityBlockingQueue
-# RecursiveAction
-# RecursiveTask
+    阻塞优先队列。
 # SynchronousQueue
+    无容量的阻塞队列，可以定义先进先出，还是先进后出。
 # ThreadLocalRandom
+    如果有一天Random成为你的性能瓶颈，请换用ThreadLocalRandom
 # ThreadPoolExecutor
-
-atomic
+    底层就是使用BlockingQueue，线程池没满就新建线程，满了就放到queue里去。
