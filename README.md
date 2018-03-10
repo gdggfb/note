@@ -6,4 +6,7 @@
 2. [java数据结构大总结](https://github.com/gdggfb/note/blob/master/resource/Collection.md)
 3. [读书列表](https://github.com/gdggfb/note/blob/master/resource/book.md)
 4. [源码阅读-tomcat](https://github.com/gdggfb/note/blob/master/resource/RSC-tomcat.md)
-5. []()
+5. [jvm高级特性]()
+6. [源码阅读-redis]()
+7. [源码阅读-OpenResty]()
+8. [golang-源码阅读]()
