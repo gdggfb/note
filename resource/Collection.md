@@ -70,7 +70,7 @@ http://blog.csdn.net/qq_33583069/article/details/50611610
 
 
 # ConcurrentHashMap
-    高性能多线程的代表，业界大表哥。
+    高性能多线程的代表，业界最强。
 # ArrayBlockingQueue
     一个有容量的多线程数组，为空时读阻塞，满时写阻塞，写入和读取时都会尝试唤醒等待中的进程
 # CompletableFuture
@@ -80,8 +80,7 @@ http://blog.csdn.net/qq_33583069/article/details/50611610
 # ConcurrentLinkedQueue
     和ConcurrentLinkedDeque差不多，但是是单向链表，不能从尾部向头遍历。
 # ConcurrentSkipListMap
-    近似二分查找，查找性能上和大表哥差不多，但是大表哥添加删除节点时可能会修改大量节点，而且还是小全局锁，所以这个小同志的性能理论上是应该超过大表哥的。另外，我刚看到randomLevel()时，我很怀疑小同志的靠谱性，细思后认为random和hashCode(),还是不一样的random的结果分布其实还是很均匀的，而hashCode()确实会在运气不佳时出现极端情况。
-有几个设计上的亮点，日后需要仔细研究一下。
+    近似二分查找，查找性能上和ConcurrentHashMap差不多，但是ConcurrentHashMap添加删除节点时可能会修改大量节点，而且还是小全局锁，所以这个ConcurrentSkipListMap的性能理论上是应该超过ConcurrentHashMap的。另外，我刚看到randomLevel()时，我很怀疑ConcurrentSkipListMap的靠谱性，细思后认为random和hashCode(),还是不一样的random的结果分布其实还是很均匀的，而hashCode()确实会在运气不佳时出现极端情况。
 # CopyOnWriteArrayList
     多线程数组，类如其名，修改元素的时候将数组复制一份出来修改，修改完了直接替换掉，适用于写少读多的情况，且对写入时效没有太严格的要求。
 # CopyOnWriteArraySet
