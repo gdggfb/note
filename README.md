@@ -7,6 +7,8 @@
 3. [读书列表](https://github.com/gdggfb/note/blob/master/resource/book.md)
 4. [源码阅读-tomcat](https://github.com/gdggfb/note/blob/master/resource/RSC-tomcat.md)
 5. [jvm高级特性]
-6. [源码阅读-redis]
-7. [源码阅读-OpenResty]
-8. [golang-源码阅读]
+6. [service mesh]
+7. [阿里技术架构研究学习]
+8. [源码阅读-redis]
+9. [源码阅读-OpenResty]
+10. [golang-源码阅读]
